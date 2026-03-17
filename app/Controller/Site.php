@@ -1,19 +1,15 @@
 <?php
-
 namespace Controller;
-
-use Src\View;
 
 class Site
 {
-    public function index(): string
+    public function index(): void
     {
-        $view = new View();
-        return $view->render('site.hello', ['message' => 'index working']);
+        echo 'working index';
     }
 
-    public function hello(): string
+    public function hello(): void
     {
-        return (new View())->render('site.hello', ['message' => 'hello working']);
+        echo 'working hello';
     }
 }
