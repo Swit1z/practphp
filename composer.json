@@ -1,0 +1,22 @@
+{
+    "name": "swit1z/preactphp",
+    "description": "simple pract",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "swit1z",
+            "email": "switiz9999@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/Src/",
+            "": "app/"
+        }
+    }
+}
