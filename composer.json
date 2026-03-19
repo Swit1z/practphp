@@ -16,7 +16,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "8.3"
+        "php": "8.3",
+        "laravel/database": "dev-master",
+        "illuminate/events": "8.x-dev"
     },
     "autoload": {
         "psr-4": {
