@@ -18,7 +18,8 @@
     "require": {
         "php": "8.3",
         "laravel/database": "dev-master",
-        "illuminate/events": "8.x-dev"
+        "illuminate/events": "8.x-dev",
+        "nikic/fast-route": "v1.x-dev"
     },
     "autoload": {
         "psr-4": {

@@ -3,7 +3,7 @@
         'name' => 'swit1z/preactphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '24e5bb03072d9a55ec0be0a6734e98ddd9a5c987',
+        'reference' => '6bb5c3b656779af61d49bccec3ab268ced29ab99',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -185,6 +185,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'nikic/fast-route' => array(
+            'pretty_version' => 'v1.x-dev',
+            'version' => '1.9999999.9999999.9999999-dev',
+            'reference' => '4012884e0b916e1bd895a5061d4abc3c99e283a4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/fast-route',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'nikic/php-parser' => array(
             'pretty_version' => '4.x-dev',
             'version' => '4.9999999.9999999.9999999-dev',
@@ -268,7 +277,7 @@
         'swit1z/preactphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '24e5bb03072d9a55ec0be0a6734e98ddd9a5c987',
+            'reference' => '6bb5c3b656779af61d49bccec3ab268ced29ab99',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
