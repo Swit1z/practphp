@@ -8,6 +8,8 @@ if (!app()->auth::check()):
     <form method="post">
         <label>Логин <input type="text" name="login"></label>
         <label>Пароль <input type="password" name="password"></label>
-        <button>Войти</button>
+        <a href="/hello">
+            Войти
+        </a>
     </form>
 <?php endif;

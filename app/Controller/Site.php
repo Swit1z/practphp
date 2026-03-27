@@ -18,13 +18,29 @@ class Site
 
     public function hello(): string
     {
-        return new View('site.hello', ['message' => 'hello working']);
+        if (!Auth::check()) {
+            app()->route->redirect('/hello');
+        }
+
+        // Передаем данные текущего пользователя в шаблон
+        return (new View())->render('site.hello', [
+            'message' => 'Добро пожаловать!',
+            'user' => Auth::user()
+        ]);
     }
+
     public function signup(Request $request): string
     {
-        if ($request->method==='POST' && User::create($request->all())){
-            return new View('site.signup', ['message'=>'Вы успешно зарегистрированы']);
+        if ($request->method === 'POST') {
+            $data = $request->all();
+            // Хешируем пароль перед созданием записи
+            if (isset($data['password'])) {
+                $data['password'] = md5($data['password']);
+            }
 
+            if (User::create($data)) {
+                return new View('site.signup', ['message' => 'Вы успешно зарегистрированы']);
+            }
         }
         return new View('site.signup');
     }
@@ -36,7 +52,7 @@ class Site
         }
         //Если удалось аутентифицировать пользователя, то редирект
         if (Auth::attempt($request->all())) {
-            app()->route->redirect('/hello');
+            app()->route->redirect('/login');
         }
         //Если аутентификация не удалась, то сообщение об ошибке
         return new View('site.login', ['message' => 'Неправильные логин или пароль']);

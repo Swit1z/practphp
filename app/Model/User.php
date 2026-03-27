@@ -5,16 +5,22 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
+use Src\Settings;
+
 
 class User extends Model implements IdentityInterface
 {
     use HasFactory;
+    protected $primaryKey = 'id_user';
 
     public $timestamps = false;
     protected $fillable = [
-        'name',
-        'login',
-        'password'
+        'Name',
+        'Login',
+        'Password',
+        'Surname',
+        'MiddleNmae',
+        'Role'
     ];
 
     protected static function booted()
