@@ -1,31 +1,28 @@
 <?php
-//Путь до директории с конфигурационными файлами
 const DIR_CONFIG = '/../config';
-
-//Подключение автозагрузчика composer
 require_once __DIR__ . '/../vendor/autoload.php';
 
-//Функция, возвращающая массив всех настроек приложения
-function getConfigs(string $path = DIR_CONFIG): array
-{
+function getConfigs(string $path = DIR_CONFIG): array {
     $settings = [];
     foreach (scandir(__DIR__ . $path) as $file) {
         $name = explode('.', $file)[0];
-        if (!empty($name)) {
+        if (!empty($name) && $file !== '.' && $file !== '..') {
             $settings[$name] = include __DIR__ . "$path/$file";
         }
     }
     return $settings;
 }
 
-require_once __DIR__ . '/../routes/web.php';
+// Создаем ОДИН экземпляр приложения
 $app = new Src\Application(new Src\Settings(getConfigs()));
 
-return new Src\Application(new Src\Settings(getConfigs()));
-
+// Регистрируем функцию-хелпер
 function app() {
     global $app;
     return $app;
 }
+
+// Загружаем роуты ПОСЛЕ создания $app
+require_once __DIR__ . '/../routes/web.php';
 
 return $app;

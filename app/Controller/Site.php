@@ -19,7 +19,7 @@ class Site
     public function hello(): string
     {
         if (!Auth::check()) {
-            app()->route->redirect('/hello');
+            app()->route->redirect('/login');
         }
 
         // Передаем данные текущего пользователя в шаблон
@@ -44,6 +44,20 @@ class Site
         }
         return new View('site.signup');
     }
+//    public function login(Request $request): string
+//    {
+//        if ($request->method === 'GET') return (new View())->render('site.login', ['message' => ['login' => $request->get('login'), 'password' => $request->get('password')]]);
+//        var_dump($request);
+//        if (Auth::attempt([
+//            'login' => $request->get('login'),
+//            'password' => $request->get('password')
+//        ])) {
+//            app()->route->redirect('/');
+//        }
+//        return (new View())->render('site.login', ['message' => 'Неправильные данные']);
+//
+//    }
+
     public function login(Request $request): string
     {
         //Если просто обращение к странице, то отобразить форму
@@ -52,7 +66,7 @@ class Site
         }
         //Если удалось аутентифицировать пользователя, то редирект
         if (Auth::attempt($request->all())) {
-            app()->route->redirect('/login');
+            app()->route->redirect('/hello');
         }
         //Если аутентификация не удалась, то сообщение об ошибке
         return new View('site.login', ['message' => 'Неправильные логин или пароль']);
